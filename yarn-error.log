@@ -1,0 +1,59 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add morgan cors
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.13.0
+
+Node version: 
+  11.6.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/akmarhw/Documents/node/node-starter/package.json: Unexpected token } in JSON at position 333
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:304:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "node-starter",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "dev": "webpack --config='./webpack/dev.js' | nodemon './dist/backend-bundle-dev.js'",
+      "start": "npm run dev",
+      "build": "webpack --config='./webpack/prod.js'"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "body-parser": "^1.18.3",
+      "express": "^4.16.4",
+      "mongoose": "^5.4.8"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.2.2",
+      "@babel/plugin-transform-regenerator": "^7.0.0",
+      "@babel/plugin-transform-runtime": "^7.2.0",
+      "@babel/preset-env": "^7.3.1",
+      "babel-loader": "^8.0.5",
+      "nodemon": "^1.18.9",
+      "webpack": "^4.29.0",
+      "webpack-cli": "^3.2.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
