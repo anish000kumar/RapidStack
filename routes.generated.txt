@@ -1,0 +1,12 @@
+router                                                                                                         
+ ├── query                                         *                                                           
+ ├── expressInit                                   *                                                           
+ ├── serveStatic                                   *                                                           
+ ├── logger                                        *                                                           
+ ├── corsMiddleware                                *                                                           
+ ├── jsonParser                                    *                                                           
+ ├── urlencodedParser                              *                                                           
+ ├── bound dispatch                                /                                                           GET
+ │    └── <anonymous>                              /                                                           GET
+ │   
+ └── <anonymous>                                   /^\/api\/?(?=\/|$)/                                         
