@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const { email } = require('@helpers/validations');
+const { mailable } = require('@services/mailService');
 
 const userSchema = Schema(
   {
@@ -31,6 +32,11 @@ const userSchema = Schema(
     timestamps: true,
   }
 );
+
+mailable({
+  schema: userSchema,
+  emailField: 'email',
+});
 
 userSchema.plugin(uniqueValidator, {
   message: 'This {PATH} exists already, it should be unique',

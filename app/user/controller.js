@@ -1,40 +1,39 @@
 const User = require('./model');
-const { crudify } = require('@helpers');
+const crudify = require('@helpers/crudify');
+const trycatch = require('@helpers/trycatch');
 
-// async function getAll(req, res) {
-//   const users = await User.find({});
-//   res.send(users);
-// }
+const userService = crudify(User);
 
-// async function create(req, res) {
-//   const user = await new User(req.body);
-//   await user.save();
-//   res.send(user);
-// }
+async function getAll(req, res) {
+  const users = await userService.getAll();
+  res.send(users);
+}
 
-// async function get(req, res) {
-//   const user = await User.findById(req.params.userId);
-//   res.send(user);
-// }
+async function create(req, res) {
+  const user = await userService.createOrFail(req.body);
+  res.send(user);
+}
 
-// async function update(req, res) {
-//   const user = await User.updateOne({ id: req.params.userId }, req.body);
-//   res.send(user);
-// }
+async function get(req, res) {
+  const user = await userService.findOrFail(req.params.userId);
+  res.send(user);
+}
 
-// async function destroy(req, res) {
-//   await User.deleteOne({ id: req.params.userId });
-//   res.send({
-//     success: true,
-//   });
-// }
+async function update(req, res) {
+  const user = await userService.updateOrFail(req.params.id)(req.body);
+  res.send(user);
+}
+
+async function destroy(req, res) {
+  await User.deleteOrFail(req.params.userId);
+  res.send(true);
+}
 
 //public functions
-module.exports = {
-  ...crudify(User),
-  // get,
-  // getAll,
-  // create,
-  // update,
-  // destroy,
-};
+module.exports = trycatch({
+  get,
+  getAll,
+  create,
+  update,
+  destroy,
+});

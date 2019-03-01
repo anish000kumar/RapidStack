@@ -20,7 +20,7 @@ function crudify(Model, name = 'Model') {
     return result;
   }
 
-  function updateOrFail(query) {
+  async function updateOrFail(query) {
     return async function(data, upsert) {
       if (typeof query === 'string') {
         query = { _id: query };
@@ -38,13 +38,13 @@ function crudify(Model, name = 'Model') {
     return res;
   }
 
-  return trycatch({
+  return {
     createOrFail,
     getAll,
     findOrFail,
     updateOrFail,
     deleteOrFail,
-  });
+  };
 }
 
 module.exports = crudify;

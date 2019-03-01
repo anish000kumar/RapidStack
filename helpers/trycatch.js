@@ -33,7 +33,8 @@ function trycatch(controllerObj) {
   const newObj = {};
 
   Object.keys(controllerObj).forEach(key => {
-    newObj[key] = wrapTryCatch(controllerObj[key]);
+    const fn = controllerObj[key];
+    newObj[key] = wrapTryCatch(fn);
   });
 
   return newObj;

@@ -3,7 +3,6 @@ const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const config = require('@config');
 const { hash: hashPassword, compare } = require('bcryptjs');
-const { crudify } = require('@helpers');
 
 function AuthService(User, fields) {
   const {
@@ -12,8 +11,6 @@ function AuthService(User, fields) {
     username = ['email'],
     email = 'email',
   } = fields;
-
-  const userCrudMethods = crudify(User);
 
   async function findByUsername(inputUserName) {
     const queries = [];
@@ -87,7 +84,6 @@ function AuthService(User, fields) {
   }
 
   return {
-    ...userCrudMethods,
     findByUsername,
     createOrFail,
     setPassword,
